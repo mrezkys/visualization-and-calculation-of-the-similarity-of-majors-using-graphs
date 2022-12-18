@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public  class Graph{
-    Vertex head;
-    int size = 0;
+    public Vertex head;
+    public int size = 0;
     public List<Vertex> getVertices() {
         List<Vertex> vertices = new ArrayList<>();
         Vertex current = head;

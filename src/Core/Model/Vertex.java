@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Vertex {
     public String name;
-    Vertex next;
+    public Vertex next;
     ArrayList<String> topics = new ArrayList<>();
-    EdgeContainer listEdge = new EdgeContainer();
+    public EdgeContainer listEdge = new EdgeContainer();
 
     Vertex(String name){
         this.name = name;

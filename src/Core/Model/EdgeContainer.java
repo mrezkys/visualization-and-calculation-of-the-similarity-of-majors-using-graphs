@@ -1,7 +1,7 @@
 package Core.Model;
 
 public class EdgeContainer {
-    Edge head;
+    public Edge head;
     Edge tail;
 
     public void  addLast(Vertex destination, double similiarity){
@@ -37,15 +37,4 @@ public class EdgeContainer {
             else break;
         }
     }
-
-//    void printReverse(){
-//        Edge Edge = tail;
-//        while (true){
-//            if(Edge != null) {
-//                System.out.println(Edge.destination);
-//                Edge = Edge.prev;
-//            }
-//            else break;
-//        }
-//    }
 }
