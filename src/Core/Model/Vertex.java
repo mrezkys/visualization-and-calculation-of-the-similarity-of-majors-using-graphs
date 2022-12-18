@@ -1,10 +1,10 @@
-package BasicGraph;
+package Core.Model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Vertex {
-    String name;
+    public String name;
     Vertex next;
     ArrayList<String> topics = new ArrayList<>();
     EdgeContainer listEdge = new EdgeContainer();

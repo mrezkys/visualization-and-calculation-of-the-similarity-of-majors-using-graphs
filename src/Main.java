@@ -1,5 +1,8 @@
-import BasicGraph.Graph;
-import Core.GraphUtils;
+import Core.Model.Graph;
+import Core.Model.VertexPair;
+import Core.Utils.GraphUtils;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +23,7 @@ public class Main {
 
         GraphUtils.calculateTopicSimilarities(graph);
         graph.printAll();
-
+        System.out.println("\nSimilarity Calculation Using Cosine");
+        GraphUtils.printVerticesWithSimilarity(graph);
     }
 }

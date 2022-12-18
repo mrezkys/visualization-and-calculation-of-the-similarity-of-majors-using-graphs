@@ -1,7 +1,5 @@
-package BasicGraph;
+package Core.Model;
 
-
-import Core.CosineSimilarity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +71,7 @@ public  class Graph{
         Vertex pivot = head;
         while (pivot != null){
             System.out.println("\n-------------------");
-            System.out.println("Graph Container " + pivot.name + "\nEdge : ");
+            System.out.println("Graph Container " + pivot.name + "\nEdge ( Relation ) *created if similarity > 0.0 : ");
             pivot.listEdge.printAll();
             pivot = pivot.next;
             System.out.println("-------------------");

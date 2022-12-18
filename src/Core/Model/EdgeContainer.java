@@ -1,4 +1,4 @@
-package BasicGraph;
+package Core.Model;
 
 public class EdgeContainer {
     Edge head;

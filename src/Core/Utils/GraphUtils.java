@@ -1,11 +1,13 @@
-package Core;
+package Core.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import BasicGraph.Edge;
-import BasicGraph.Graph;
-import BasicGraph.Vertex;
+import Core.Model.Edge;
+import Core.Model.Graph;
+import Core.Model.Vertex;
+import Core.Model.VertexPair;
+import Core.Utils.CosineSimilarity;
 
 public class GraphUtils {
 
@@ -28,7 +30,7 @@ public class GraphUtils {
         }
     }
 
-    public static List<VertexPair> getSimilarVertices(Graph graph, double minSimilarity) {
+    public static List<VertexPair> getSimilarVertices(Graph graph) {
         List<VertexPair> similarVertices = new ArrayList<>();
 
         // Iterate over all pairs of vertices in the graph
@@ -41,36 +43,19 @@ public class GraphUtils {
                 double similarity = CosineSimilarity.cosineSimilarity(vertex1.getTopicString(), vertex2.getTopicString());
 
                 // If the similarity is greater than or equal to the minimum similarity, add the pair of vertices to the list
-                if (similarity >= minSimilarity) {
-                    similarVertices.add(new VertexPair(vertex1, vertex2, similarity));
-                }
+
+                similarVertices.add(new VertexPair(vertex1, vertex2, similarity));
             }
         }
 
         return similarVertices;
     }
 
-    public static class VertexPair {
-        private final Vertex vertex1;
-        private final Vertex vertex2;
-        private final double similarity;
-
-        public VertexPair(Vertex vertex1, Vertex vertex2, double similarity) {
-            this.vertex1 = vertex1;
-            this.vertex2 = vertex2;
-            this.similarity = similarity;
-        }
-
-        public Vertex getVertex1() {
-            return vertex1;
-        }
-
-        public Vertex getVertex2() {
-            return vertex2;
-        }
-
-        public double getSimilarity() {
-            return similarity;
+    public static void printVerticesWithSimilarity(Graph graph){
+        List<VertexPair> similarVertices = getSimilarVertices(graph);
+        for (VertexPair similarVertex : similarVertices) {
+            System.out.println(similarVertex.getVertex1().name + " and " + similarVertex.getVertex2().name + " : " + similarVertex.getSimilarity());
         }
     }
+
 }
