@@ -18,19 +18,18 @@ public class Main {
         graph.insert("mesin");
 
 
-        Scanner scanner = new Scanner(System.in);
 
         // get with json
-//        List<String> informatika = JsonHelper.readAndConvertToList("src/resources/informatika.json");
-//        List<String> elektro = JsonHelper.readAndConvertToList("src/resources/mesin.json");
-//        List<String> mesin = JsonHelper.readAndConvertToList("src/resources/elektro.json");
+        List<String> informatika = JsonHelper.readAndConvertToList("src/resources/informatika.json");
+        List<String> elektro = JsonHelper.readAndConvertToList("src/resources/mesin.json");
+        List<String> mesin = JsonHelper.readAndConvertToList("src/resources/elektro.json");
 
-        // get with scanner
-        List<String> informatika = ScannerHelper.scanTopic(scanner,"informatika");
-        List<String> elektro = ScannerHelper.scanTopic(scanner,"elektro");
-        List<String> mesin = ScannerHelper.scanTopic(scanner,"mesin");
-
-        scanner.close();
+//        get with scanner
+//        Scanner scanner = new Scanner(System.in);
+//        List<String> informatika = ScannerHelper.scanTopic(scanner,"informatika");
+//        List<String> elektro = ScannerHelper.scanTopic(scanner,"elektro");
+//        List<String> mesin = ScannerHelper.scanTopic(scanner,"mesin");
+//        scanner.close();
 
 
         graph.insertTopics("informatika", informatika.toArray(new String[0]));
@@ -39,10 +38,25 @@ public class Main {
 
 
 
+        // generate edge with similarity
         GraphUtils.calculateTopicSimilarities(graph);
+
+        //print all vertex
         graph.printAll();
-        System.out.println("\nSimilarity Calculation Using Cosine");
+
+        // print similarity calculation
+        System.out.println("\nSimilarity Calculation Using Cosine : ");
         GraphUtils.printVerticesWithSimilarity(graph);
+
+        // print similarity calculation sorted
+        System.out.println("\nSimilarity Calculation Using Cosine (SORTED DESC) : ");
+        List<VertexPair> listSimilar = GraphUtils.getSimilarVertices(graph);
+        VertexPair.sort(listSimilar);
+        VertexPair.printListVertexPair(listSimilar);
+
+
+
+
 
         // Create the GraphPanel and add it to a JFrame window
         GraphPanel panel = new GraphPanel(graph);
