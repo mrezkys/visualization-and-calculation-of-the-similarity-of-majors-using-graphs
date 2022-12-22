@@ -47,7 +47,7 @@ public  class Graph{
 
     }
 
-    public void insertTopics(String target, String[] newTopics){
+    public void insertTopics(String target, List<String> newTopics){
         Vertex targetVertex = searchGraphContainer(target);
         targetVertex.insertTopics(newTopics);
     }
@@ -69,12 +69,15 @@ public  class Graph{
 
     public void printAll(){
         Vertex pivot = head;
+        System.out.println("\nGRAPH DATA");
         while (pivot != null){
-            System.out.println("\n-------------------");
-            System.out.println("Graph Container " + pivot.name + "\nEdge ( Relation ) *created if similarity > 0.0 : ");
-            pivot.listEdge.printAll();
-            pivot = pivot.next;
+            System.out.println("---------------------------------------------------------------------------------");
+            System.out.println("Graph Container " + pivot.name + "\nEdge ( Relation ) will created if similarity > 0.0 : ");
             System.out.println("-------------------");
+            System.out.println("List Edge : ");
+            pivot.listEdge.printAll();
+            System.out.println("---------------------------------------------------------------------------------\n");
+            pivot = pivot.next;
         }
     }
 

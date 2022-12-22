@@ -11,7 +11,7 @@ import Core.Utils.CosineSimilarity;
 
 public class GraphUtils {
 
-    public static void calculateTopicSimilarities(Graph graph) {
+    public static void generateEdgeBasedOnSimilarity(Graph graph) {
         // Iterate over all pairs of vertices in the graph
         for (Vertex vertex1 : graph.getVertices()) {
             for (Vertex vertex2 : graph.getVertices()) {
@@ -30,7 +30,7 @@ public class GraphUtils {
         }
     }
 
-    public static List<VertexPair> getSimilarVertices(Graph graph) {
+    public static List<VertexPair> generateVertexPair(Graph graph) {
         List<VertexPair> similarVertices = new ArrayList<>();
 
         // Iterate over all pairs of vertices in the graph
@@ -52,7 +52,7 @@ public class GraphUtils {
     }
 
     public static void printVerticesWithSimilarity(Graph graph){
-        List<VertexPair> similarVertices = getSimilarVertices(graph);
+        List<VertexPair> similarVertices = generateVertexPair(graph);
         for (VertexPair similarVertex : similarVertices) {
             System.out.println(similarVertex.getVertex1().name + " and " + similarVertex.getVertex2().name + " : " + similarVertex.getSimilarity());
         }

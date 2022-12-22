@@ -16,8 +16,8 @@ public class Vertex {
     public void insert(Vertex vertex){
        next = vertex;
     }
-    public void insertTopics(String[] newTopics){
-        topics.addAll(List.of(newTopics));
+    public void insertTopics(List<String> newTopics){
+        topics.addAll(newTopics);
     }
     public void insertEdge(Vertex targetVertex, double similiarity){
         listEdge.addLast(targetVertex, similiarity);

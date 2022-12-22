@@ -10,7 +10,7 @@ public class ScannerHelper {
 
         // Read user input using a Scanner
         while (true) {
-            System.out.print("Enter a "+ title +" (or 'q' to quit): ");
+            System.out.print("Enter a topic for "+ title +" (use 'q' to quit): ");
             String input = scanner.nextLine();
 
             // Check if the user wants to quit

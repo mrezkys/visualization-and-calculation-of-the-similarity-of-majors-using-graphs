@@ -1,17 +1,13 @@
 import Core.Helper.InterfaceHelper;
 import Core.Helper.JsonHelper;
-import Core.Helper.ScannerHelper;
 import Core.Model.Graph;
 import Core.Model.VertexPair;
-import Core.Utils.GraphPanel;
 import Core.Utils.GraphUtils;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 
-public class Main {
+public class JsonDemo {
     public static void main(String[] args) throws IOException {
         // menginisiasi graph
         Graph graph = new Graph();
@@ -20,30 +16,16 @@ public class Main {
         graph.insert("elektro");
         graph.insert("mesin");
 
-        // baru kita masukkan topik ke setiap vertex
-        // terdapat fungsi List.of() yang berfungsi untuk mengkonversi string ke array list tipe string
-        // hal itu diperlukan karena paremeternya adalah List<String>
-        graph.insertTopics("informatika", List.of(new String[]{
-                "Probabilitas dan Statistika",
-                "Matematika Diskrit",
-                "Sistem Digital",
-                "Aljabar Linear",
-                "Algoritma dan Pemrograman Dasar"
-        }));
-        graph.insertTopics("elektro", List.of(new String[]{
-                "Kelistrikan Dasar",
-                "Elektronika Dasar",
-                "Sistem Digital",
-                "Arus Lemah",
-                "Algoritma dan Pemrograman Dasar"
-        }));
-        graph.insertTopics("mesin", List.of(new String[]{
-                "CNC",
-                "Mesin Bubut",
-                "Mesin",
-                "Mesin",
-                "Mesin"
-        }));
+        // melakukan pembacaan topik yang disimpan dalam file json dengan menggunakan class JSON Helper
+        // diperlukan path/lokasi tempat json disimpan
+        List<String> informatika = JsonHelper.readAndConvertToList("src/resources/informatika.json");
+        List<String> elektro = JsonHelper.readAndConvertToList("src/resources/elektro.json");
+        List<String> mesin = JsonHelper.readAndConvertToList("src/resources/mesin.json");
+
+        // memasukkan daftar topik ke setiap vertex
+        graph.insertTopics("informatika", informatika);
+        graph.insertTopics("elektro", elektro);
+        graph.insertTopics("mesin", mesin);
 
 
         // memanggil class GraphUtils yang didalamnya terdapat fungsi static yang melakukan proses :
